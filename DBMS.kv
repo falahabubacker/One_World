@@ -1,0 +1,484 @@
+ScreenManager:
+    LoginScreen:
+    MenuScreen:
+    RegisterScreen:
+    SendScreen:
+    HistoryScreen:
+    ProfileScreen:
+
+
+<RegisterScreen>:
+    name: 'register'
+
+    register: register
+    firstname: firstname
+    lastname: lastname
+    r_username: r_username
+    r_password: r_password
+    email: email
+    phone: phone
+
+    Image:
+        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundLight.jpeg'
+
+    GridLayout:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.4,0.9
+        canvas:
+            Color:
+                rgba: (1,1,1,0.9)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    MDLabel:
+        id: register
+        text: 'Register'
+        font_style: 'H2'
+        halign: 'center'
+        pos_hint: {'center_y': 0.82}
+        color: 0,0,0,0.5
+
+    MDTextField:
+        id: firstname
+        hint_text: 'First Name'
+        pos_hint: {'center_x': 0.4, 'center_y': 0.65}
+        size_hint_x: None
+        width: 200
+
+    MDTextField:
+        id: lastname
+        hint_text: 'Last Name'
+        pos_hint: {'center_x': 0.6, 'center_y': 0.65}
+        size_hint_x: None
+        width: 200
+
+    MDTextField:
+        id: r_username
+        hint_text: 'Username'
+        pos_hint: {'center_x': 0.4, 'center_y': 0.5}
+        size_hint_x: None
+        width: 200
+
+    MDTextField:
+        id: r_password
+        hint_text: 'Password'
+        pos_hint: {'center_x': 0.6, 'center_y': 0.5}
+        size_hint_x: None
+        width: 200
+
+    MDTextField:
+        id: email
+        hint_text: 'Email id'
+        pos_hint: {'center_x': 0.4, 'center_y': 0.35}
+        size_hint_x: None
+        width: 200
+
+    MDTextField:
+        id: phone
+        hint_text: 'Contact no.'
+        pos_hint: {'center_x': 0.6, 'center_y': 0.35}
+        size_hint_x: None
+        width: 200
+
+    MDRaisedButton:
+        text: 'Next'
+        pos_hint: {'center_x': 0.6, 'center_y': 0.2}
+        on_release:
+            root.retData(None)
+
+    MDRaisedButton:
+        text: 'Back'
+        pos_hint: {'center_x': 0.4, 'center_y': 0.2}
+        on_release:
+            root.manager.current = 'login'
+
+
+<LoginScreen>:
+    name: 'login'
+
+    username: username
+    password: password
+
+    Image:
+        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundLight.jpeg'
+
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: 500,200
+                size: 275,400
+
+    MDLabel:
+        text: 'Login'
+        font_style: 'H2'
+        font_size: 50
+        theme_text_color: 'Secondary'
+        halign: 'center'
+        pos_hint: {'center_y': 0.73}
+
+    MDTextField:
+        id: username
+        hint_text: 'Username'
+        icon_right: "bitcoin"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+        size_hint_x: None
+        width: 250
+
+    MDTextField:
+        id: password
+        hint_text: 'Password'
+        helper_text: 'forgot password?'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.485, 'center_y': 0.5}
+        size_hint_x: None
+        width: 210
+        password: True
+        password_mask: '•'
+
+    MDIconButton:
+        pos_hint: {'center_x': 0.585, 'center_y': 0.5}
+        icon: 'eye-off-outline'
+        on_press:
+            root.show_password(None)
+        on_release:
+            root.hide_password(None)
+
+    MDRectangleFlatButton:
+        text: 'Login'
+        pos_hint: {'center_x': 0.565, 'center_y': 0.4}
+        size_hint_x: None
+        width: 250
+        on_release:
+            root.show_data(None)
+
+    MDFlatButton:
+        text: 'Register'
+        theme_text_color: 'Hint'
+        pos_hint: {'center_x': 0.43, 'center_y': 0.4}
+        size_hint_x: None
+        width: 250
+        on_release:
+            root.manager.current = 'register'
+
+<MenuScreen>:
+    name: 'menu'
+
+    menuName: menuName
+    menuBalance: menuBalance
+    sendUsername: sendUsername
+
+    Image:
+        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundDark.jpeg'
+
+    GridLayout:
+        canvas:
+            Color:
+                rgba:(0,0,0,0.4)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+    GridLayout:
+        size_hint: 0.4, 0.6
+        pos_hint: {'center_x': 0.69, 'center_y': 0.5}
+        spacing: 20
+        padding_x: 0.8
+        cols: 2
+
+        MDIconButton:
+            icon: "account-circle-outline"
+            user_font_size: "200sp"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.accent_color
+            on_release:
+                root.manager.current = 'profile'
+                root.change_screen_size()
+        MDIconButton:
+            icon: "history"
+            user_font_size: "200sp"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.accent_color
+            on_release:
+                root.manager.current = 'history'
+        MDIconButton:
+            icon: "bank-transfer"
+            user_font_size: "200sp"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.accent_color
+            on_release:
+                root.manager.current = 'send'
+        MDIconButton:
+            icon: "help-circle-outline"
+            user_font_size: "200sp"
+            theme_text_color: "Custom"
+            text_color: app.theme_cls.accent_color
+
+
+    FloatLayout:
+        orientation: 'tb-lr'
+        size_hint: 0.3,1
+        pos_hint: {'top': 1, 'left': 0}
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Image:
+            source: 'H:/My Drive/Scripts/Projects/KivyGUI/profileIcon2.png'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            size_hint: 0.7,0.7
+
+        MDLabel:
+            text: 'Welcome back,'
+            font_style: 'H4'
+            theme_text_color: 'Secondary'
+            halign: 'center'
+            pos_hint: {'center_y': 0.43}
+
+        MDLabel:
+            id: menuName
+            text: '_'
+            font_style: 'H2'
+            font_size: 50
+            halign: 'center'
+            pos_hint: {'center_y': 0.36}
+
+    GridLayout:
+        size_hint: 0.7,0.1
+        pos_hint: {'right': 1, 'center_y': 1}
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    Label:
+        text: 'Balance: '
+        pos_hint: {'center_y': 0.972, 'center_x': 0.04}
+        color: 0,0,0,0.8
+
+    Label:
+        id: menuBalance
+        text: '0000'
+        pos_hint: {'center_y': 0.972, 'center_x': 0.1}
+        color: 0,0,0,0.8
+
+    Label:
+        id: sendUsername
+        text: ' '
+        pos_hint: {'center_y': 0.975, 'center_x': 0.75}
+        color: 0,0,0,0.6
+
+
+    MDIconButton:
+        icon: 'cog'
+        pos_hint: {'center_y': 0.975, 'right': 1}
+
+    MDIconButton:
+        icon: 'account-off'
+        pos_hint: {'center_y': 0.975, 'right': 0.97}
+        on_release:
+            root.logout(None)
+
+
+<SendScreen>:
+    name: 'send'
+
+    sendBalance: sendBalance
+    sendUsername: sendUsername
+    recvUsername: recvUsername
+    amt: amt
+    password: password
+
+    Image:
+        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundDark.jpeg'
+
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: 500,200
+                size: 275,400
+
+    GridLayout:
+        size_hint: 1,0.1
+        pos_hint: {'left': 0, 'center_y': 1}
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    FloatLayout:
+        size: self.size
+        MDIconButton:
+            icon: 'arrow-left'
+            pos_hint: {'center_y': 0.975, 'left': 0}
+            on_release:
+                root.manager.current = 'menu'
+
+        Label:
+            id: sendUsername
+            text: ' '
+            pos_hint: {'center_y': 0.975, 'center_x': 0.75}
+            color: 0,0,0,0.6
+
+        Label:
+            id: sendBalance
+            text: '0000'
+            pos_hint: {'center_y': 0.975, 'center_x': 0.94}
+            color: 0,0,0,0.6
+
+        MDLabel:
+            text: 'Send Money'
+            font_style: 'H2'
+            font_size: 45
+            theme_text_color: 'Secondary'
+            halign: 'center'
+            pos_hint: {'center_y': 0.75}
+
+        MDTextField:
+            id: recvUsername
+            hint_text: "Recipient's Username"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.65}
+            size_hint_x: None
+            width: 230
+
+        MDTextField:
+            id: amt
+            hint_text: 'Amount'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+            size_hint_x: None
+            width: 230
+
+        MDTextField:
+            id: password
+            hint_text: 'Password'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+            size_hint_x: None
+            width: 230
+            password: True
+            password_mask: '•'
+
+        MDRectangleFlatButton:
+            text: 'Send'
+            pos_hint: {'center_x': 0.56, 'center_y': 0.35}
+            size_hint_x: None
+            width: 250
+            on_release:
+                root.sendBtn()
+
+<HistoryScreen>:
+    name: 'history'
+
+    sendUsername: sendUsername
+
+    GridLayout:
+        size_hint: 1,0.1
+        pos_hint: {'left': 0, 'center_y': 1}
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    FloatLayout:
+        size: self.size
+        MDIconButton:
+            icon: 'arrow-left'
+            pos_hint: {'center_y': 0.975, 'left': 0}
+            on_release:
+                root.manager.current = 'menu'
+
+    Label:
+        id: sendUsername
+        text: ' '
+        pos_hint: {'center_y': 0.975, 'center_x': 0.75}
+        color: 0,0,0,0.6
+
+
+<ProfileScreen>:
+    name: 'profile'
+
+    firstname: firstname
+    lastname: lastname
+    username: username
+    email: email
+
+    GridLayout:
+        size_hint: None,0.1
+        width: 525
+        pos_hint: {'center_x': 0.5, 'center_y': 1}
+        canvas:
+            Color:
+                rgba:(1,1,1,0.7)
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+    FloatLayout:
+        Image:
+            source: 'H:/My Drive/Scripts/Projects/KivyGUI/profileIcon2.png'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.78}
+            size_hint: 0.5,0.5
+
+    GridLayout:
+        size_hint: 0.9, 0.3
+        pos_hint: {'center_x': 0.75  , 'center_y': 0.4}
+        spacing: 40
+        padding_x: 0
+        cols: 1
+
+        MDTextField:
+            id: firstname
+            text: 'Falah'
+            hint_text: 'Firstname'
+            size_hint_x: None
+            width: 210
+            line_color_normal: app.theme_cls.primary_color
+        MDTextField:
+            id: lastname
+            text: 'Abubacker'
+            hint_text: 'Lastname'
+            size_hint_x: None
+            width: 210
+            line_color_normal: app.theme_cls.primary_color
+        MDTextField:
+            id: username
+            text: 'muhammedfalah'
+            hint_text: 'Username'
+            size_hint_x: None
+            width: 210
+            line_color_normal: app.theme_cls.primary_color
+        MDTextField:
+            id: email
+            text: 'falahmanalodi@gmail.com'
+            hint_text: 'Email'
+            size_hint_x: None
+            width: 210
+            line_color_normal: app.theme_cls.primary_color
+    MDIconButton:
+        icon: 'arrow-left'
+        pos_hint: {'center_y': 0.975, 'left': 0}
+        on_release:
+            root.manager.current = 'menu'
+            root.change_screen_size()
