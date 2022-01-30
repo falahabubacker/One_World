@@ -41,7 +41,7 @@ ScreenManager:
     phone: phone
     
     Image:
-        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundLight.jpeg'
+        source: 'assets/backgroundLight.jpeg'
     
     GridLayout:
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -125,7 +125,7 @@ ScreenManager:
     password: password
 
     Image:
-        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundLight.jpeg'
+        source: 'assets/backgroundLight.jpeg'
         
         canvas:
             Color:
@@ -188,7 +188,7 @@ ScreenManager:
     menuBalance: menuBalance
 
     Image:
-        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundDark.jpeg'        
+        source: 'assets/backgroundDark.jpeg'        
         
     GridLayout:
         canvas:
@@ -240,7 +240,7 @@ ScreenManager:
                 size: self.size
         
         Image:
-            source: 'H:/My Drive/Scripts/Projects/KivyGUI/profileIcon2.png'
+            source: 'assets/profileIcon2.png'
             pos_hint: {'center_x': 0.5, 'center_y': 0.7}
             size_hint: 0.7,0.7
             
@@ -304,7 +304,7 @@ ScreenManager:
     password: password
     
     Image:
-        source: 'H:/My Drive/Scripts/Projects/KivyGUI/backgroundDark.jpeg'
+        source: 'assets/backgroundDark.jpeg'
 
         canvas:
             Color:
@@ -540,7 +540,7 @@ class HistoryScreen(Screen, MDApp):
 
         layout = FloatLayout()
 
-        layout.add_widget(Image(source='H:/My Drive/Scripts/Projects/KivyGUI/backgroundLight.jpeg'))
+        layout.add_widget(Image(source='assets/backgroundLight.jpeg'))
 
         self.data_tables = MDDataTable(pos_hint={'center_x': 0.5, 'center_y': 0.5},
                                        size_hint=(0.75, 0.6),
